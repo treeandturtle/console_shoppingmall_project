@@ -113,6 +113,8 @@ void main() {
             } on Exception {
               print('가격이 올바르지 않아요~!');
             }
+          } else {
+            print('비번이 틀렸네요~');
           }
         }
         break;
