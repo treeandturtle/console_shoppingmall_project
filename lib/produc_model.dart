@@ -1,23 +1,26 @@
 import 'dart:io';
 
 class ShoppingMall {
-  List<Product> items = [];
-  List<Consumer> kings = [];
-  List<String> guni = [];
-  int totalPrice = 0;
+  List<Product> items = []; // 상품 목록
+  List<Consumer> kings = []; // 등록된 리뷰들
+  List<String> guni = []; // 장바구니에 담긴 상품 이름 목록
+  int totalPrice = 0; // 장바구니에 담긴 총 가격
 
+  // 상품 목록 출력
   showProducts() {
     for (Product i in items) {
       print('${i.item}/ ${i.price}원');
     }
   }
 
+  // 리뷰 목록 출력
   showReview() {
     for (Consumer i in kings) {
       print('${i.person}: ${i.item}의 구매후기! -> ${i.review}');
     }
   }
 
+  // 장바구니에 상품 추가
   addToCart(String item, int num) {
     try {
       print('입력받은 item: "$item"');
@@ -41,6 +44,7 @@ class ShoppingMall {
     }
   }
 
+  // 리뷰 등록
   review(Consumer king) {
     kings.add(king);
     print('리뷰를 업로드하시겠습니까?');
@@ -62,6 +66,7 @@ class ShoppingMall {
   }
 }
 
+// 상품 클래스
 class Product {
   String item;
   int price;
@@ -69,6 +74,7 @@ class Product {
   Product(this.item, this.price);
 }
 
+// 리뷰 작성자 클래스
 class Consumer {
   String person;
   String item;

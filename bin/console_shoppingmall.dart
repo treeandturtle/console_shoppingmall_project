@@ -2,28 +2,32 @@ import 'package:console_shoppingmall/produc_model.dart';
 import 'dart:io';
 
 void main() {
-  String? key = '';
-  String? pass = '6852';
+  String? key = ''; // 사용자 입력 메뉴 선택 키
+  String? pass = '6852'; // 관리자 모드 비밀번호
 
-  ShoppingMall shop = ShoppingMall();
+  ShoppingMall shop = ShoppingMall(); // 쇼핑몰 인스턴스 생성
+
   shop.items = [
     Product('shirts', 45000),
     Product('pants', 30000),
     Product('outerwear', 35000),
     Product('tops', 38000),
     Product('shoes', 5000),
-  ];
+  ]; // 기본 상품 목록 초기화
+
+  // 사용자 입력을 받아 기능 실행 반복
   while (key != '5') {
     showMenu();
     shop.showReview();
     key = stdin.readLineSync();
+    // 선택한 메뉴에 따라 기능 분기
     switch (key) {
-      case '1':
+      case '1': // 상품 목록 보기
         {
           shop.showProducts();
           break;
         }
-      case '2':
+      case '2': // 장바구니 담기
         {
           print('상품 이름을 입력해 주세요!');
           String? item = stdin.readLineSync();
@@ -36,7 +40,7 @@ void main() {
           }
           break;
         }
-      case '3':
+      case '3': // 장바구니 목록 및 총 금액 출력
         {
           if (shop.guni.isEmpty) {
             print('장바구니에 담긴 상품이 업습빈다.');
@@ -48,7 +52,7 @@ void main() {
           break;
         }
 
-      case '4':
+      case '4': // 프로그램 종료 확인
         {
           print('정말 종료하시겠습니까?');
           key = stdin.readLineSync();
@@ -59,7 +63,7 @@ void main() {
           }
           break;
         }
-      case '6':
+      case '6': // 장바구니 초기화
         {
           {
             if (shop.guni.isEmpty) {
@@ -72,7 +76,7 @@ void main() {
           }
           break;
         }
-      case '7':
+      case '7': // 리뷰 작성
         {
           print('이름을 작성해주세요');
           String? person = stdin.readLineSync();
@@ -85,7 +89,7 @@ void main() {
           break;
         }
 
-      case '8':
+      case '8': // 관리자 모드 - 상품 추가
         {
           print('관리자 모드~ 비번을 입력하세요!');
 
@@ -122,6 +126,7 @@ void main() {
   }
 }
 
+// 메뉴 출력 함수
 void showMenu() {
   List<String> catalog = [
     '상품 목록 보기',
