@@ -4,6 +4,7 @@ import 'dart:io';
 void main() {
   String? key = ''; // 사용자 입력 메뉴 선택 키
   String? pass = '6852'; // 관리자 모드 비밀번호
+  String? stop = ''; // 종료 변수
 
   ShoppingMall shop = ShoppingMall(); // 쇼핑몰 인스턴스 생성
 
@@ -16,7 +17,7 @@ void main() {
   ]; // 기본 상품 목록 초기화
 
   // 사용자 입력을 받아 기능 실행 반복
-  while (key != '5') {
+  while (stop != '5') {
     showMenu();
     shop.showReview();
     key = stdin.readLineSync();
@@ -55,8 +56,8 @@ void main() {
       case '4': // 프로그램 종료 확인
         {
           print('정말 종료하시겠습니까?');
-          key = stdin.readLineSync();
-          if (key == '5') {
+          stop = stdin.readLineSync();
+          if (stop == '5') {
             print('이용해주셔서 감사합니다!');
           } else {
             print('종료하지 않습니다');
